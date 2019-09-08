@@ -2,11 +2,12 @@
   <div id="app">
     <h1>CrontabInput</h1>
 
-  <div style="border: solid 1px lime;">
+  <div style="width: 600px;">
     <CrontabInput :value="value"></CrontabInput>
   </div>
+  <br>
   <div>
-    Value: {{ value }}
+    Value: <input type="text" v-model="value">
   </div>
 
   </div>

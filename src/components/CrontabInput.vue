@@ -30,22 +30,6 @@
       </div>
 
       <div class="col">
-        <label for>Second(s):</label>
-        <div class="items">
-          <span v-if="seconds.length === 0">Every second</span>
-          <span v-for="(s, i) in seconds" :key="s">
-            <span class="item" @click="handleDel(i, seconds)">{{ s }}</span>
-          </span>
-        </div>
-        <select @click="handleAdd($event, seconds)">
-          <option value>+</option>
-          <option v-for="v in 60" :key="v" :value="v-1" v-html="v-1"></option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
         <label>Day of week(s):</label>
         <div class="items">
           <span v-if="dow.length === 0">Every day</span>
@@ -101,7 +85,6 @@ export default {
     return {
       hours: [],
       minutes: [0],
-      seconds: [0],
       dow: [],
       dom: [],
       months: [],
@@ -143,9 +126,6 @@ export default {
       let m = this.minutes.length;
 	  m = m === 0 ? 60 : m;
 	  
-      let s = this.seconds.length;
-	  s = s === 0 ? 60 : s;
-	  
       let dw = this.dow.length;
 	  dw = dw === 0 ? 7 : dw;
 	  
@@ -155,7 +135,7 @@ export default {
       let my = this.months.length;
 	  my = my === 0 ? 12 : my;
 	  
-      const timesPerDay = h * m * s;
+      const timesPerDay = h * m;
       const timesPerYear = Math.round(timesPerDay * (dm * my / 7 * dw));
 
       return (
@@ -176,12 +156,12 @@ export default {
 }
 .row {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 10px;
 }
 .col {
   flex-grow: 1;
-  flex-basis: 0;
-  max-width: 9em;
+  min-width: 9em;
   margin-right: 10px;
   padding: 4px;
   border: 1px solid whitesmoke;
@@ -219,6 +199,7 @@ export default {
   text-decoration: underline;
 }
 .info {
+    text-align: center;
     font-weight: bold;
 }
 </style>
