@@ -1,5 +1,9 @@
 # crontab-input-vue
 
+** WORK IN PROGRESS **
+
+A Vue component to edit a crontab schedule entry such as "* * * * * *".
+
 ## Project setup
 ```
 yarn install

@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>CrontabInput</h1>
+
+  <div style="border: solid 1px lime;">
+    <CrontabInput :value="value"></CrontabInput>
+  </div>
+  <div>
+    Value: {{ value }}
+  </div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CrontabInput from './components/CrontabInput'
 
 export default {
   name: 'app',
+  data: function () {
+    return {
+      value: "* * * * * *"
+    }
+  },
   components: {
-    HelloWorld
+    CrontabInput
   }
 }
 </script>
@@ -21,7 +33,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
