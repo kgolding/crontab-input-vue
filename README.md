@@ -2,6 +2,8 @@
 
 ** WORK IN PROGRESS **
 
+![Screenshot_20190908_194219.png](Screenshot_20190908_194219.png)
+
 A Vue component to edit a crontab schedule entry such as "* * * * * *".
 
 ## Project setup

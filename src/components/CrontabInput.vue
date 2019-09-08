@@ -62,7 +62,7 @@
       <div class="col">
         <label for>Day of month(s):</label>
         <div class="items">
-          <span v-if="dom.length === 0">Every day</span>
+          <span v-if="dom.length === 0">Any day of month</span>
           <span v-for="(s, i) in dom" :key="s">
             <span class="item" @click="handleDel(i, dom)">{{ s }}</span>
           </span>
@@ -76,7 +76,7 @@
       <div class="col">
         <label>Month(s):</label>
         <div class="items">
-          <span v-if="months.length === 0">Every month</span>
+          <span v-if="months.length === 0">All months</span>
           <span v-for="(m, i) in months" :key="m">
             <span class="item" @click="handleDel(i, months)">{{ monthsofyear[m] }}</span>
           </span>
@@ -156,7 +156,7 @@ export default {
 	  my = my === 0 ? 12 : my;
 	  
       const timesPerDay = h * m * s;
-      const timesPerYear = timesPerDay * dm * my;
+      const timesPerYear = Math.round(timesPerDay * (dm * my / 7 * dw));
 
       return (
         timesPerDay +
@@ -171,7 +171,6 @@ export default {
 
 <style scoped>
 .container {
-  display: inline-block;
   display: flex;
   flex-direction: column;
 }
@@ -182,7 +181,7 @@ export default {
 .col {
   flex-grow: 1;
   flex-basis: 0;
-  max-width: 10em;
+  max-width: 9em;
   margin-right: 10px;
   padding: 4px;
   border: 1px solid whitesmoke;
@@ -220,5 +219,6 @@ export default {
   text-decoration: underline;
 }
 .info {
+    font-weight: bold;
 }
 </style>
